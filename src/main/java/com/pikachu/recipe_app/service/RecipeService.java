@@ -12,6 +12,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,9 +26,21 @@ public class RecipeService {
     private final IngredientRepository ingredientRepository;
     private final RecipeIngredientRepository recipeIngredientRepository;
 
-    public Page<RecipeResponseDto> list(Pageable pageable) {
-        return recipeRepository.findAll(pageable)
-                .map(recipe -> new RecipeResponseDto(recipe.getId(), recipe.getTitle(), recipe.getDescription()));
+//    public Page<RecipeResponseDto> list(Pageable pageable) {
+//        return recipeRepository.findAll(pageable)
+//                .map(recipe -> new RecipeResponseDto(recipe.getId(), recipe.getTitle(), recipe.getDescription()));
+//    }
+
+    //조회 & 검색 - 조건이 null 또는 isBlank()면 전체 레시피 목록 조회
+    public Page<RecipeResponseDto> searchRecipe(String title, Pageable pageable) {
+        Specification<Recipe> specification = Specification.allOf();
+
+        if(title != null && !title.isBlank()) {
+            specification = specification.and((root, query, criteriaBuilder) -> criteriaBuilder.like(root.get("title"), "%" + title + "%"));
+        }
+
+        return recipeRepository.findAll(specification, pageable)
+                .map(RecipeResponseDto::new);
     }
 
     public RecipeDetailDto get(Long id) {
@@ -50,7 +63,7 @@ public class RecipeService {
         recipe.setTitle(dto.getTitle());
         recipe.setDescription(dto.getDescription());
         Recipe saved = recipeRepository.save(recipe);
-        return new RecipeResponseDto(saved.getId(), saved.getTitle(), saved.getDescription());
+        return new RecipeResponseDto(saved);
     }
 
     public RecipeResponseDto update(Long id, RecipeDto dto) {
@@ -60,7 +73,7 @@ public class RecipeService {
         recipe.setDescription(dto.getDescription());
         Recipe saved = recipeRepository.save(recipe);
 
-        return new RecipeResponseDto(saved.getId(), saved.getTitle(), saved.getDescription());
+        return new RecipeResponseDto(saved);
     }
 
     public void delete(Long id) {

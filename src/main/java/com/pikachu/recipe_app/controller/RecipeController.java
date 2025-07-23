@@ -22,12 +22,13 @@ public class RecipeController {
 
     @GetMapping
     public Page<RecipeResponseDto> list(
+            @RequestParam(required = false) String title,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("title").ascending());
 
-        return recipeService.list(pageable);
+        return recipeService.searchRecipe(title, pageable);
     }
 
     //recipe 상세 조회
