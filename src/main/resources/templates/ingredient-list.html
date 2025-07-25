@@ -7,19 +7,17 @@
 </head>
 <body>
 <header class="site-header">
-  <h1 class="site-title">🥦 재료 관리</h1>
+  <h1 class="site-title">🍳 집밥최고</h1>
   <nav class="nav-tabs">
     <a href="/recipes" class="nav-tab">레시피 관리</a>
     <a href="/ingredients" class="nav-tab active">재료 관리</a>
   </nav>
 </header>
-
-<div class="content-wrapper">
-  <div class="top-actions">
-    <a href="/ingredients/new" class="btn btn-primary">+ 재료 추가</a>
-  </div>
-
   <div class="list-container">
+    <div class="list-header">
+      <h2>🥦 재료 목록</h2>
+      <a href="/recipes/new" class="add-button">➕ 재료 추가</a>
+    </div>
     <div th:each="ingredient : ${ingredients}" class="list-item">
       <div class="item-header">
         <span class="item-title" th:text="${ingredient.name}">재료명</span>

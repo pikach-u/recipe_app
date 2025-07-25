@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/ingredient")
+@RequestMapping("/ingredients")
 public class IngredientViewController {
     private final IngredientService ingredientService;
 
