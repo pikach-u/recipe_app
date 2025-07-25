@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class IngredientDto {
+    private Long id;
     @NotBlank
     private String name;
 }

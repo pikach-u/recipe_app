@@ -55,4 +55,8 @@ public class IngredientService {
 
         return new IngredientResponseDto(saved.getId(), saved.getName());
     }
+
+    public void delete(Long id){
+        ingredientRepository.deleteById(id);
+    }
 }

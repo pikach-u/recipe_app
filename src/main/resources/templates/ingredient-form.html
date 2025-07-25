@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title th:text="${ingredient.name} != null ? ${ingredient.name} + ' 수정' : '재료 등록'">재료 폼</title>
+  <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<div class="container">
+  <h1 th:text="${ingredient.name} != null ? ${ingredient.name} + ' 수정' : '재료 등록'"
+      style="margin-bottom: 30px; font-family: 'Ownglyph_corncorn-Rg'; font-weight: bold; font-size: 2rem;">
+    재료 폼
+  </h1>
+
+  <form th:action="${ingredient.id} != null ? @{/ingredients/{id}/edit(id=${ingredient.id}, page=${page})} : @{/ingredients}"
+        method="post" th:object="${ingredient}">
+
+  <div class="list-item" style="margin-bottom: 20px;">
+      <label for="name" style="font-weight: 600;">재료명(필수)</label><br />
+      <input type="text" id="name" th:field="*{name}" placeholder="재료명을 입력하세요" required
+             style="width: 100%; padding: 10px; margin-top: 8px; border-radius: 10px; border: 1px solid #ccc;" />
+    </div>
+    <input type="hidden" name="page" th:value="${page}" />
+    <div class="actions" style="margin-top: 30px;">
+      <button type="submit" class="btn btn-primary">저장</button>
+      <a th:href="@{/ingredients(page=${page})}" class="btn btn-secondary">취소</a>
+    </div>
+  </form>
+</div>
+</body>
+</html>

@@ -16,14 +16,14 @@
   <div class="list-container">
     <div class="list-header">
       <h2>🥦 재료 목록</h2>
-      <a href="/recipes/new" class="add-button">➕ 재료 추가</a>
+      <a href="/ingredients/new" class="add-button">➕ 재료 추가</a>
     </div>
     <div th:each="ingredient : ${ingredients}" class="list-item">
       <div class="item-header">
         <span class="item-title" th:text="${ingredient.name}">재료명</span>
         <div class="item-actions">
-          <a th:href="@{/ingredients/edit/{id}(id=${ingredient.id})}" class="btn btn-secondary">✏️ 수정</a>
-          <form th:action="@{/ingredients/delete/{id}(id=${ingredient.id})}" method="post" style="display:inline;">
+          <a th:href="@{/ingredients/{id}/edit(id=${ingredient.id}, page=${page})}" class="btn btn-secondary">✏️ 수정</a>
+          <form th:action="@{/ingredients/{id}/delete(id=${ingredient.id})}" method="post" style="display:inline;">
             <button type="submit" class="btn btn-danger" onclick="return confirm('정말 삭제하시겠습니까?');">🗑️ 삭제</button>
           </form>
         </div>
