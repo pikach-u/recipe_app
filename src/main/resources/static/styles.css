@@ -14,14 +14,14 @@
 
 /* 헤더 영역 */
 .site-header {
-  background-color: #764ba2;
-  color: white;
+  background-color: #fff8dc;
+  color: black;
   padding: 15px 30px;
   display: flex;
   flex-direction: column;
   font-family: 'Ownglyph_corncorn-Rg';
   align-items: center;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  /* box-shadow: 0 3px 6px rgba(0,0,0,0.1); */
 }
 
 /* 사이트 타이틀 */
@@ -39,7 +39,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
-    background: rgba(102, 126, 234, 0.15);
+    background-color: #FFFFB4;
     border-radius: 50px;
     padding: 5px;
 }
@@ -48,7 +48,7 @@
     padding: 12px 30px;
     margin: 0 5px;
     background: transparent;
-    color: #fff8dc;
+    color: black;
     border-radius: 50px;
     text-decoration: none;
     font-family: 'Ownglyph_corncorn-Rg';
@@ -59,13 +59,7 @@
 }
 
 .nav-tab:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-.nav-tab.active {
-  background-color: white;
-  color: #ff6f61;
-  font-weight: 700;
+  background-color: rgba(255, 187, 0, 0.5);
 }
 
 body {
@@ -84,14 +78,10 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
-.nav-tab:hover {
-    background: rgba(102, 126, 234, 0.3);
-}
-
 .nav-tab.active {
-    background: #667eea;
-    color: white;
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.5);
+    background: #FFFFB4;
+    color: black;
+    box-shadow: 0 5px 15px rgba(255, 187, 0, 0.5);
     transform: translateY(-2px);
 }
 
@@ -101,6 +91,13 @@ body {
     padding: 0 40px;
 }
 
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0 20px;
+}
+
 /* 리스트 아이템 */
 .list-item {
     background: white;
@@ -108,7 +105,7 @@ body {
     padding: 20px;
     margin-bottom: 15px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #FFFFB4;
     transition: all 0.3s ease;
 }
 
@@ -121,7 +118,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .item-title {
@@ -172,8 +169,21 @@ font-family: 'Ownglyph_corncorn-Rg';
 
 /* 색상별 버튼 */
 .btn-primary {
-  background-color: #667eea;
+  background-color: #FFFFB4;
+  color: black;
+}
+
+.add-button {
+  padding: 8px 16px;
+  background-color: #28a745;
   color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.add-button:hover {
+  background-color: #218838;
 }
 
 .btn-primary:hover {
@@ -210,7 +220,7 @@ font-family: 'Ownglyph_corncorn-Rg';
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Ownglyph_corncorn-Rg', sans-serif;
   line-height: 1.7;
 }
 

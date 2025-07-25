@@ -38,10 +38,13 @@ public class RecipeViewController {
     }
 
     @GetMapping("/{id}")
-    public String detail(@PathVariable Long id, Model model) {
+    public String detail(
+            @PathVariable Long id,
+            @RequestParam(defaultValue = "1") int page,
+            Model model) {
         RecipeDetailDto recipeDetailDto = recipeService.get(id);
         model.addAttribute("recipe", recipeDetailDto);
-
+        model.addAttribute("currentPage", page);
         return "recipe-detail";
     }
 

@@ -37,7 +37,7 @@
   </div>
 
   <div class="actions">
-    <a th:href="@{/recipes}" class="btn btn-secondary">← 목록으로</a>
+    <a th:href="@{/recipes(page=${currentPage-1})}" class="btn btn-secondary">← 목록으로</a>
     <a th:href="@{/recipes/edit/{id}(id=${recipe.id})}" class="btn btn-primary">✏️ 수정</a>
     <form th:action="@{/recipes/delete/{id}(id=${recipe.id})}" method="post" style="display:inline;">
       <button type="submit" class="btn btn-danger" onclick="return confirm('삭제하시겠습니까?');">🗑️ 삭제</button>
