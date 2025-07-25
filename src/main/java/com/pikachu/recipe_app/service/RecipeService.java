@@ -55,13 +55,18 @@ public class RecipeService {
                         )
                 ).toList();
 
-        return new RecipeDetailDto(recipe.getId(), recipe.getTitle(), recipe.getDescription(), ingredientDtos);
+        return new RecipeDetailDto(recipe.getId(),
+                recipe.getTitle(),
+                recipe.getDescription(),
+                ingredientDtos,
+                recipe.getCategory());
     }
 
     public RecipeResponseDto create(RecipeDto dto) {
         Recipe recipe = new Recipe();
         recipe.setTitle(dto.getTitle());
         recipe.setDescription(dto.getDescription());
+        recipe.setCategory(dto.getCategory());
         Recipe saved = recipeRepository.save(recipe);
         return new RecipeResponseDto(saved);
     }

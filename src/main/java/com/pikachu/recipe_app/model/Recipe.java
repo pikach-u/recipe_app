@@ -31,4 +31,8 @@ public class Recipe {
     @JsonBackReference("recipe-ri")
     private List<RecipeIngredient> recipeIngredients = new ArrayList<>();
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 10)
+    private RecipeCategory category;
+
 }

@@ -1,5 +1,6 @@
 package com.pikachu.recipe_app.dto;
 
+import com.pikachu.recipe_app.model.RecipeCategory;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,4 +17,5 @@ public class RecipeDetailDto {
     private String title;
     private String description;
     private List<RecipeIngredientDto> ingredients;
+    private RecipeCategory category;
 }
