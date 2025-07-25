@@ -33,9 +33,9 @@
 
   <!-- 페이징 -->
   <div class="pagination">
-    <a th:if="${currentPage > 1}" th:href="@{/ingredients(page=${currentPage - 1})}" class="btn btn-primary">이전</a>
+    <a th:if="${currentPage > 1}" th:href="@{/ingredients(page=${currentPage-2})}" class="btn btn-primary">이전</a>
     <span th:text="${currentPage} + ' / ' + ${totalPages}">1 / 3</span>
-    <a th:if="${currentPage < totalPages}" th:href="@{/ingredients(page=${currentPage + 1})}" class="btn btn-primary">다음</a>
+    <a th:if="${currentPage < totalPages}" th:href="@{/ingredients(page=${currentPage})}" class="btn btn-primary">다음</a>
   </div>
 </div>
 </body>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title th:text="${recipe.title} != null ? ${recipe.title} + ' 수정' : '레시피 등록'">레시피 폼</title>
+  <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<div class="container">
+  <h1 th:text="${recipe.title} != null ? ${recipe.title} + ' 수정' : '레시피 등록'"
+      style="margin-bottom: 30px; font-family: 'Ownglyph_corncorn-Rg'; font-weight: bold; font-size: 2rem;">
+    레시피 폼
+  </h1>
+
+  <form th:action="${recipe.id} != null ? @{/recipes/{id}/edit(id=${recipe.id})} : @{/recipes}"
+        method="post" th:object="${recipe}">
+
+    <div class="list-item" style="margin-bottom: 20px;">
+      <label for="title" style="font-weight: 600;">제목(필수)</label><br />
+      <input type="text" id="title" th:field="*{title}" placeholder="제목을 입력하세요" required
+             style="width: 100%; padding: 10px; margin-top: 8px; border-radius: 10px; border: 1px solid #ccc;" />
+    </div>
+
+    <div class="list-item" style="margin-bottom: 20px;">
+      <label for="description" style="font-weight: 600;">설명</label><br />
+      <textarea id="description" th:field="*{description}" rows="5" placeholder="설명을 입력하세요"
+                style="width: 100%; padding: 10px; margin-top: 8px; border-radius: 10px; border: 1px solid #ccc;"></textarea>
+    </div>
+
+    <div class="list-item" style="margin-bottom: 20px;">
+      <label for="category" style="font-weight: 600;">카테고리</label><br />
+      <select id="category" th:field="*{category}"
+              style="width: 100%; padding: 10px; margin-top: 8px; border-radius: 10px; border: 1px solid #ccc;">
+        <option value="">-- 선택 --</option>
+        <option th:each="category : ${categories}"
+                th:value="${category}"
+                th:text="${category.displayName}">
+        </option>
+      </select>
+    </div>
+
+    <div class="actions" style="margin-top: 30px;">
+      <button type="submit" class="btn btn-primary">저장</button>
+      <a th:href="@{/recipes}" class="btn btn-secondary">취소</a>
+    </div>
+  </form>
+</div>
+</body>
+</html>

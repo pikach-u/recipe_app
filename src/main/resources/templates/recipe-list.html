@@ -26,8 +26,8 @@
         <span class="item-title" th:text="${recipe.title}"></span>
         <div class="item-actions">
           <a th:href="@{/recipes/{id}(id=${recipe.id}, page=${currentPage})}" class="btn btn-primary">상세보기</a>
-          <a th:href="@{/recipes/edit/{id}(id=${recipe.id})}" class="btn btn-secondary">✏️ 수정</a>
-          <form th:action="@{/recipes/delete/{id}(id=${recipe.id})}" method="post" style="display:inline;">
+          <a th:href="@{/recipes/{id}/edit(id=${recipe.id})}" class="btn btn-secondary">✏️ 수정</a>
+          <form th:action="@{/recipes/{id}/delete(id=${recipe.id})}" method="post" style="display:inline;">
             <button type="submit" class="btn btn-danger" onclick="return confirm('삭제하시겠습니까?');">🗑️ 삭제</button>
           </form>
         </div>
