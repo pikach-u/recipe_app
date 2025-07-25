@@ -28,6 +28,7 @@ public class RecipeResponseDto {
         this.id = recipe.getId();
         this.title = recipe.getTitle();
         this.description = recipe.getDescription();
+        this.category = recipe.getCategory();
         this.recipeIngredientList = recipe.getRecipeIngredients();
     }
 }

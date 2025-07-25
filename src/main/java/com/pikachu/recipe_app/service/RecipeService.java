@@ -76,6 +76,8 @@ public class RecipeService {
                 .orElseThrow(() -> new NoSuchElementException("레시피가 존재하지 않습니다."));
         recipe.setTitle(dto.getTitle());
         recipe.setDescription(dto.getDescription());
+        recipe.setCategory(dto.getCategory());
+
         Recipe saved = recipeRepository.save(recipe);
 
         return new RecipeResponseDto(saved);
