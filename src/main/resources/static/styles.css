@@ -1,0 +1,264 @@
+/* 기본 리셋 */
+@font-face {
+    font-family: 'Ownglyph_corncorn-Rg';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2412-1@1.0/Ownglyph_corncorn-Rg.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 헤더 영역 */
+.site-header {
+  background-color: #764ba2;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Ownglyph_corncorn-Rg';
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+/* 사이트 타이틀 */
+.site-title {
+  margin: 15px;
+  margin-bottom: 30px;
+  font-family: 'Ownglyph_corncorn-Rg';
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+
+/* 네비게이션 탭 */
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    background: rgba(102, 126, 234, 0.15);
+    border-radius: 50px;
+    padding: 5px;
+}
+
+.nav-tab {
+    padding: 12px 30px;
+    margin: 0 5px;
+    background: transparent;
+    color: #fff8dc;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: 'Ownglyph_corncorn-Rg';
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-tab:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.nav-tab.active {
+  background-color: white;
+  color: #ff6f61;
+  font-weight: 700;
+}
+
+body {
+    font-family: 'Ownglyph_corncorn-Rg', sans-serif;
+    background: #fff8dc;
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.nav-tab:hover {
+    background: rgba(102, 126, 234, 0.3);
+}
+
+.nav-tab.active {
+    background: #667eea;
+    color: white;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.5);
+    transform: translateY(-2px);
+}
+
+/* 리스트 컨테이너 */
+.list-container {
+    margin-top: 10px;
+    padding: 0 40px;
+}
+
+/* 리스트 아이템 */
+.list-item {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-left: 4px solid #667eea;
+    transition: all 0.3s ease;
+}
+
+.list-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.item-title {
+font-family: 'Ownglyph_corncorn-Rg';
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.item-description {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-family: 'Ownglyph_corncorn-Rg';
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* 버튼 기본 스타일 */
+.btn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Ownglyph_corncorn-Rg';
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 4px;
+}
+
+/* 색상별 버튼 */
+.btn-primary {
+  background-color: #667eea;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #5a63d8;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-danger {
+  background-color: #ff6f61;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #e75c4f;
+}
+
+.item-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.detail-container {
+  max-width: 720px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  font-family: 'Noto Sans KR', sans-serif;
+  line-height: 1.7;
+}
+
+.detail-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.detail-section {
+  margin-bottom: 25px;
+}
+
+.detail-text {
+  margin-top: 8px;
+  white-space: pre-line;
+}
+
+.ingredient-list, .step-list {
+  padding-left: 20px;
+}
+
+.ingredient-item, .step-item {
+  margin-bottom: 8px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.btn-secondary {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.btn-danger {
+  background-color: #f44336;
+  color: white;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;  /* ← 가운데 정렬 */
+  align-items: center;
+  gap: 10px;                 /* 버튼 간 간격 */
+  margin-top: 20px;
+}
+

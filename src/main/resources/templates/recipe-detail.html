@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title th:text="${recipe.title} + ' 상세 정보'">레시피 상세</title>
+  <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<div class="detail-container">
+  <h1 class="detail-title" th:text="${recipe.title}">레시피 제목</h1>
+
+  <div class="detail-section">
+    <p><strong>설명:</strong></p>
+    <p class="detail-text" th:text="${recipe.description}">레시피 설명</p>
+  </div>
+
+  <div class="detail-section">
+    <p><strong>카테고리:</strong> <span th:text="${recipe.category}">카테고리</span></p>
+  </div>
+
+  <div class="detail-section">
+    <h2>재료 목록</h2>
+    <ul class="ingredient-list">
+      <li th:each="ing : ${recipe.ingredients}" class="ingredient-item">
+        <span class="ingredient-name" th:text="${ing.ingredientName}">재료명</span> -
+        <span class="ingredient-quantity" th:text="${ing.quantity}">수량</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ✅ 추후 조리 과정 추가 위치 -->
+  <div class="detail-section">
+    <h2>조리 과정</h2>
+    <ol class="step-list">
+<!--      <li th:each="step : ${recipe.steps}" th:text="${step.description}" class="step-item">1단계 설명</li>-->
+    </ol>
+  </div>
+
+  <div class="actions">
+    <a th:href="@{/recipes}" class="btn btn-secondary">← 목록으로</a>
+    <a th:href="@{/recipes/edit/{id}(id=${recipe.id})}" class="btn btn-primary">✏️ 수정</a>
+    <form th:action="@{/recipes/delete/{id}(id=${recipe.id})}" method="post" style="display:inline;">
+      <button type="submit" class="btn btn-danger" onclick="return confirm('삭제하시겠습니까?');">🗑️ 삭제</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

@@ -19,7 +19,7 @@ public class RecipeResponseDto {
     private Long id;
     private String title;
     private String description;
-    private List<RecipeIngredient> recipeIngredientList;
+    private List<RecipeIngredientDto> recipeIngredientList;
 
     private RecipeCategory category;
 
@@ -29,6 +29,12 @@ public class RecipeResponseDto {
         this.title = recipe.getTitle();
         this.description = recipe.getDescription();
         this.category = recipe.getCategory();
-        this.recipeIngredientList = recipe.getRecipeIngredients();
+        this.recipeIngredientList = recipe.getRecipeIngredients().stream()
+                .map(recipeIngredient -> new RecipeIngredientDto(
+                        recipeIngredient.getIngredient().getId(),
+                        recipeIngredient.getIngredient().getName(),
+                        recipeIngredient.getQuantity()
+                ))
+                .toList();
     }
 }

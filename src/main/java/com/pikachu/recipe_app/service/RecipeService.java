@@ -36,7 +36,8 @@ public class RecipeService {
         Specification<Recipe> specification = Specification.allOf();
 
         if(title != null && !title.isBlank()) {
-            specification = specification.and((root, query, criteriaBuilder) -> criteriaBuilder.like(root.get("title"), "%" + title + "%"));
+            specification = specification.and((root, query, criteriaBuilder) ->
+                    criteriaBuilder.like(root.get("title"), "%" + title + "%"));
         }
 
         return recipeRepository.findAll(specification, pageable)
