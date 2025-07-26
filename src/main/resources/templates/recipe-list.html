@@ -17,7 +17,8 @@
 <!-- 검색창 -->
 <div class="search-wrapper">
   <form th:action="@{/recipes}" method="get" class="search-form">
-    <input type="text" name="keyword" placeholder="레시피 검색..." class="search-input"/>
+    <input type="text" name="title" placeholder="레시피 검색..."
+           class="search-input" th:value="${title}"/>
     <button type="submit" class="btn btn-primary">🔍</button>
   </form>
 </div>

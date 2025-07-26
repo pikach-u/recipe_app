@@ -31,7 +31,7 @@ public class RecipeViewController {
             Model model
     ) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("title").ascending());
-        Page<RecipeResponseDto> recipePage = recipeService.searchRecipe(null, pageable);
+        Page<RecipeResponseDto> recipePage = recipeService.searchRecipe(title, pageable);
 
         model.addAttribute("recipes", recipePage.getContent());
         model.addAttribute("currentPage", page + 1);
