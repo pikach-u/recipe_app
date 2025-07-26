@@ -13,6 +13,15 @@
     <a href="/ingredients" class="nav-tab">재료 관리</a>
   </nav>
 </header>
+
+<!-- 검색창 -->
+<div class="search-wrapper">
+  <form th:action="@{/recipes}" method="get" class="search-form">
+    <input type="text" name="keyword" placeholder="레시피 검색..." class="search-input"/>
+    <button type="submit" class="btn btn-primary">🔍</button>
+  </form>
+</div>
+
 <!-- 레시피 리스트 -->
  <div id="recipes-list" class="list-container">
    <!-- 레시피 추가 -->
