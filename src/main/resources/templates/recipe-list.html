@@ -1,64 +1,64 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>‍🍳 레시피 공유 시스템</title>
-  <link rel="stylesheet" th:href="@{/styles.css}"/>
+    <meta charset="UTF-8">
+    <title>‍🍳 레시피 공유 시스템</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
 </head>
 <body>
 <header class="site-header">
-  <h1 class="site-title">🍳 집밥최고</h1>
-  <nav class="nav-tabs">
-    <a href="/recipes" class="nav-tab active">레시피 관리</a>
-    <a href="/ingredients" class="nav-tab">재료 관리</a>
-  </nav>
+    <h1 class="site-title">🍳 집밥최고</h1>
+    <nav class="nav-tabs">
+        <a href="/recipes" class="nav-tab active">레시피 관리</a>
+        <a href="/ingredients" class="nav-tab">재료 관리</a>
+    </nav>
 </header>
 
 <!-- 검색창 -->
 <div class="search-wrapper">
-  <form th:action="@{/recipes}" method="get" class="search-form">
-    <input type="text" name="title" placeholder="레시피 검색..."
-           class="search-input" th:value="${title}"/>
-    <button type="submit" class="btn btn-primary">🔍</button>
-  </form>
+    <form th:action="@{/recipes}" method="get" class="search-form">
+        <input type="text" name="title" placeholder="레시피 검색..."
+               class="search-input" th:value="${title}"/>
+        <button type="submit" class="btn btn-primary">🔍</button>
+    </form>
 </div>
 
 <!-- 레시피 리스트 -->
- <div id="recipes-list" class="list-container">
-   <!-- 레시피 추가 -->
-   <div class="list-header">
-     <h2>📃 레시피 목록</h2>
-     <a href="/recipes/new" class="add-button">➕ 레시피 추가</a>
-   </div>
-   <!-- 기존 리스트 아이템들 -->
-    <div th:each="recipe : ${recipes}" class="list-item">
-      <div class="item-header">
-        <span class="item-title" th:text="${recipe.title}"></span>
-        <div class="item-actions">
-          <a th:href="@{/recipes/{id}(id=${recipe.id}, page=${currentPage})}" class="btn btn-primary">상세보기</a>
-          <a th:href="@{/recipes/{id}/edit(id=${recipe.id})}" class="btn btn-secondary">✏️ 수정</a>
-          <form th:action="@{/recipes/{id}/delete(id=${recipe.id})}" method="post" style="display:inline;">
-            <button type="submit" class="btn btn-danger" onclick="return confirm('삭제하시겠습니까?');">🗑️ 삭제</button>
-          </form>
-        </div>
-      </div>
-      <div class="item-description" th:text="${recipe.description}"></div>
-      <div class="ingredients-list">
-        <strong>재료 (<span th:text="${#lists.size(recipe.recipeIngredientList)}"></span>개):</strong>
-        <div th:each="ing : ${recipe.recipeIngredientList}" class="ingredient-item">
-          <span class="ingredient-name" th:text="${ing.ingredientName}"></span>
-          <span class="ingredient-quantity" th:text="${ing.quantity}"></span>
-        </div>
-      </div>
+<div id="recipes-list" class="list-container">
+    <!-- 레시피 추가 -->
+    <div class="list-header">
+        <h2>📃 레시피 목록</h2>
+        <a href="/recipes/new" class="add-button">➕ 레시피 추가</a>
     </div>
-  </div>
+    <!-- 기존 리스트 아이템들 -->
+    <div th:each="recipe : ${recipes}" class="list-item">
+        <div class="item-header">
+            <span class="item-title" th:text="${recipe.title}"></span>
+            <div class="item-actions">
+                <a th:href="@{/recipes/{id}(id=${recipe.id}, page=${currentPage})}" class="btn btn-primary">상세보기</a>
+                <a th:href="@{/recipes/{id}/edit(id=${recipe.id})}" class="btn btn-secondary">✏️ 수정</a>
+                <form th:action="@{/recipes/{id}/delete(id=${recipe.id})}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('삭제하시겠습니까?');">🗑️ 삭제</button>
+                </form>
+            </div>
+        </div>
+        <div class="item-description" th:text="${recipe.description}"></div>
+        <div class="ingredients-list">
+            <strong>재료 (<span th:text="${#lists.size(recipe.recipeIngredientList)}"></span>개):</strong>
+            <div th:each="ing : ${recipe.recipeIngredientList}" class="ingredient-item">
+                <span class="ingredient-name" th:text="${ing.ingredientName}"></span>
+                <span class="ingredient-quantity" th:text="${ing.quantity}"></span>
+            </div>
+        </div>
+    </div>
+</div>
 
-  <!-- 페이징 -->
-  <div class="pagination">
+<!-- 페이징 -->
+<div class="pagination">
     <a th:if="${currentPage > 1}" th:href="@{/recipes(page=${currentPage - 2})}" class="btn btn-primary">이전</a>
     <span th:text="${currentPage} + ' / ' + ${totalPages}"></span>
     <a th:if="${currentPage < totalPages}" th:href="@{/recipes(page=${currentPage})}" class="btn btn-primary">다음</a>
-  </div>
+</div>
 </div>
 
 </body>

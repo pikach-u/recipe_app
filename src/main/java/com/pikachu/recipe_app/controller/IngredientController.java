@@ -19,12 +19,13 @@ public class IngredientController {
 
     @GetMapping
     public Page<IngredientResponseDto> list(
+            @RequestParam(required = false) String name,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("name").ascending());
 
-        return ingredientService.list(pageable);
+        return ingredientService.list(name, pageable);
     }
 
     @PutMapping("/{id}")

@@ -8,6 +8,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
@@ -18,12 +19,16 @@ import java.util.NoSuchElementException;
 public class IngredientService {
     private final IngredientRepository ingredientRepository;
 
-    public Page<IngredientResponseDto> list(Pageable pageable) {
-        return ingredientRepository.findAll(pageable)
-                .map(ingredient -> new IngredientResponseDto(
-                        ingredient.getId(),
-                        ingredient.getName()
-                ));
+    public Page<IngredientResponseDto> list(String name, Pageable pageable) {
+        Specification<Ingredient> specification = Specification.allOf();
+
+        if(name != null && !name.isBlank()){
+            specification = specification.and((root, query, criteriaBuilder) ->
+                    criteriaBuilder.like(root.get("name"), "%" + name + "%"));
+        }
+
+        return ingredientRepository.findAll(specification, pageable)
+                .map(IngredientResponseDto::new);
     }
 
     public IngredientResponseDto get(Long id){

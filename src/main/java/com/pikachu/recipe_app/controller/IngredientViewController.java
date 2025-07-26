@@ -30,7 +30,7 @@ public class IngredientViewController {
             Model model
     ) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("name").ascending());
-        Page<IngredientResponseDto> ingredientPage = ingredientService.list(pageable);
+        Page<IngredientResponseDto> ingredientPage = ingredientService.list(name, pageable);
 
         model.addAttribute("ingredients", ingredientPage.getContent());
         model.addAttribute("currentPage", page + 1);
